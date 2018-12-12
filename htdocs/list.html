@@ -1,0 +1,36 @@
+<html><head>
+<script>
+var regKey = /key=([0-9a-z\-]+)/;
+var key = regKey.exec(location.href)[1];
+
+var click_l3 = function(){
+  var ajax = new XMLHttpRequest();
+  ajax.open("get", "/json/3sec?key=" + key, true);
+  ajax.send();
+  ajax.addEventListener("load", function(){
+    var html = document.getElementById("l3");
+    if(html) html.innerHTML = this.response;
+  }, false);
+};
+
+var click_l10 = function(){
+  var ajax = new XMLHttpRequest();
+  ajax.open("get", "/json/10sec?key=" + key, true);
+  ajax.send();
+  ajax.addEventListener("load", function(){
+    var html = document.getElementById("l10");
+    if(html) html.innerHTML = this.response;
+  }, false);
+};
+</script>
+</head>
+<body>
+<h1>List</h1>
+<h2>latency 3sec</h2>
+<h3 id="l3" onclick='click_l3();'>click here</h3>
+<h2>latency 10sec</h2>
+<h3 id="l10" onclick='click_l10();'>click here</h3>
+<a href='/'>top</a>
+</body>
+</html>
+

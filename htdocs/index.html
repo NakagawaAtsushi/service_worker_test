@@ -1,0 +1,28 @@
+<html><head>
+<script>
+var getListSW = function() {
+  location.href='/list.html?key=' + guid();
+
+}
+var getList = function() {
+  location.href= '/list.html?key=' + guid() + '&sw=false';
+}
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+</script>
+</head>
+<body>
+<h1>top page</h1>
+<h2><a onclick='getList();'>get list</a></h2>
+<h2><a onclick='getListSW();'>get list with ServiceWorker</a></h2>
+<script src="/sw-install.js" async></script>
+</body>
+</html>
+
+
